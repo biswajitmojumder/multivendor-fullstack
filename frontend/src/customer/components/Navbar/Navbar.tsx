@@ -16,12 +16,13 @@ import {
 } from "@mui/icons-material";
 import CategorySheet from "./CategorySheet";
 import { mainCategory } from "../../../data/category/mainCategory";
+import { useNavigate } from "react-router-dom";
 const Navbar = () => {
   const theme = useTheme();
   const isLarge = useMediaQuery(theme.breakpoints.up("lg"));
   const [selectedCategory, setSelectedCategory] = useState("men");
   const [showCategorySheet, setShowCategorySheet] = useState(false);
-
+  const navigate = useNavigate()
   return (
     <>
       <Box className="sticky top-0 left-0 right-0 bg-white" sx={{ zIndex: 2 }}>
@@ -81,7 +82,7 @@ const Navbar = () => {
             </IconButton>
 
             {isLarge && (
-              <Button startIcon={<Storefront />} variant="outlined">
+              <Button onClick={()=>navigate("/become-seller")} startIcon={<Storefront />} variant="outlined">
                 Become Seller
               </Button>
             )}
